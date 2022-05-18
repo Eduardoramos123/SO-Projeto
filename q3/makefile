@@ -6,7 +6,7 @@ cyper: cypher.c transformations.c utils.c
 	gcc -Wall -o cypher cypher.c utils.c transformations.c 
 
 run:
-	./cypher quote.txt quote_cyphered.txt
+	./cypher < quote.txt > quote_cyphered.txt 
 
 clean:
 	rm -rf cypher
