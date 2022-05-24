@@ -1,8 +1,22 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #define LINE_SIZE 256
+
+
+
+int isempty(const char *s)
+{
+  while (*s) {
+    if (!isspace(*s))
+      return 0;
+    s++;
+  }
+  return 1;
+}
+
 
 int main(int argc, char* argv[]) {
 	FILE* file;
@@ -73,7 +87,7 @@ int main(int argc, char* argv[]) {
 				    			
 				}
     				else if (line[i] == '\n') {
-    					text[index] = '\0';
+    					text[index] = ' ';
     				}
     				else {
     					text[index] = line[i];
@@ -85,9 +99,14 @@ int main(int argc, char* argv[]) {
     		    		
     		char *tokens = strtok(text,".!?");
     		int sig_num = 0;
+
     		
     		if (flg == 0) {
     			while(tokens != NULL) {
+    				if (isempty(tokens) == 1) {
+    					tokens = strtok(NULL,".!?");
+    					continue;
+    				}
     				if (num == 1) {
     					printf("[%d]  %s%c\n", num, tokens, sig[sig_num]);
     				}
