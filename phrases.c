@@ -34,8 +34,9 @@ int main(int argc, char* argv[]) {
     			strcpy(copy, line);
     		}
     		
+    		
     		if (flg == 0) {
-    			if (copy[strlen(copy) - 2] != '.' && copy[strlen(copy) - 2] != '!' && copy[strlen(copy) - 2] != '?' && copy[strlen(copy) - 2] != ' ') {
+    			if (copy[strlen(copy) - 2] != '.' && copy[strlen(copy) - 2] != '!' && copy[strlen(copy) - 2] != '?') {
 	    			num++;
 	    		}
     		}
@@ -72,7 +73,7 @@ int main(int argc, char* argv[]) {
 				    			
 				}
     				else if (line[i] == '\n') {
-    					text[index] = ' ';
+    					text[index] = '\0';
     				}
     				else {
     					text[index] = line[i];
